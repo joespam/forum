@@ -1,0 +1,27 @@
+!!!
+%html
+%head
+	%title Forum
+	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+	%link{ rel: 'stylesheet', href: 'http://fonts.googleapis.com/css?family=Alegreya+Sans:400,300,700', type: 'text/css'}
+	%link{ rel: 'stylesheet', href: 'http://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css'}
+	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	= csrf_meta_tags
+
+%body
+	%header.main_header.clearfix
+		.container
+			#logo
+				%p Rails Forum
+			#buttons
+				- if user_signed_in?
+					= link_to "New Post", new_post_path
+
+
+	.container
+		%p.notice= notice
+		%p.alert= alert 
+
+	.container
+		= yield
+	
